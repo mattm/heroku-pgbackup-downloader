@@ -10,7 +10,7 @@ Here's an example of how to use it:
 
 ```ruby heroku-pgbackups-downloader.rb myappname /Users/matt/backups```
 
- The script will download then a database dump to a file called `myappname - timestamp.dump` in the supplied directory where timestamp is replaced with YYYYMMDDHHMMSS indicating when the backup was created.
+ The script will then download a database backup to a file called `myappname - timestamp.dump` in the supplied directory where timestamp is replaced with a timestamp indicating when the backup was created.
 
  You can schedule this in a cron job to download periodic backups of your app's database.
 
