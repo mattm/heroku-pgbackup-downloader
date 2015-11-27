@@ -2,7 +2,7 @@ module HerokuPGBackupDownloader
 	HEROKU_PATH = "/usr/bin/heroku"
 
 	# Download a backup for an app to the local disk
-	def self.download(app, local_directory)
+	def self.run(app, local_directory)
 		puts "Running backup script for #{app}..."
 
 		# Create a new backup
@@ -49,4 +49,6 @@ module HerokuPGBackupDownloader
 	end
 end
 
-HerokuPGBackupDownloader.download("myappname", "/Users/matt/Backups")
+raise "This script expects two arguments: the app name and the local directory to download the backup" unless ARGV.length === 2
+
+HerokuPGBackupDownloader.run(ARGV[0], ARGV[1])
