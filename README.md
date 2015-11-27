@@ -1,6 +1,6 @@
-# Heroku Backup Downloader
+# Heroku Postgres Backup Downloader
 
-This Ruby script creates a new backup of your Heroku app's database and downloads it to your local computer.
+This Ruby script creates a new backup of your Heroku app's Postgres database and downloads it to your local computer.
 
 ## How it works
 
