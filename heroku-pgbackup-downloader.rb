@@ -1,5 +1,5 @@
 module HerokuPGBackupDownloader
-	HEROKU_PATH = "/usr/bin/heroku"
+	HEROKU_PATH = "/usr/local/bin/heroku"
 
 	# Download a backup for an app to the local disk
 	def self.run(app, local_directory)
@@ -19,11 +19,13 @@ module HerokuPGBackupDownloader
 	# Create a new backup and return the backup id
 	def self.capture(app)
 		puts "Capturing a new backup..."
-		raw = `#{HEROKU_PATH} pg:backups capture --app #{app}`
+		`#{HEROKU_PATH} pg:backups capture --app #{app}`
+
+		info = `#{HEROKU_PATH} pg:backups:info --app #{app}`
 
 		# Extract the backup id
-		backup_id_regex = /---backup--->\s(.+?)\n\n/
-		backup_match = backup_id_regex.match(raw)
+		backup_id_regex = /===\sBackup\s(.+)\n/
+		backup_match = backup_id_regex.match(info)
 
 		# Return the new backup id
 		backup_match.captures.first
