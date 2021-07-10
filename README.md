@@ -8,7 +8,7 @@ This Ruby script creates a new backup of your Heroku app's Postgres database and
 
 Here's an example of how to use it:
 
-```ruby heroku-pgbackups-downloader.rb myappname /Users/username/backups```
+```ruby heroku-pgbackup-downloader.rb myappname /Users/username/backups```
 
  The script will then download a database backup to a file called `myappname - timestamp.dump` in the supplied directory where timestamp is replaced with a timestamp indicating when the backup was created.
 
