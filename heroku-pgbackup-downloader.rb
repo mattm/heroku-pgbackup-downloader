@@ -33,7 +33,7 @@ module HerokuPGBackupDownloader
 
 	# Returns the URL for an app's backup
 	def self.url(app, backup_id)
-		raw = `#{HEROKU_PATH} pg:backups public-url #{backup_id} --app #{app}`
+		raw = `#{HEROKU_PATH} pg:backups:url #{backup_id} --app #{app}`
 
 		# There's a new line character at the end we need to remove
 		raw.gsub("\n", "")
@@ -47,7 +47,9 @@ module HerokuPGBackupDownloader
 		local_destination_filename = "#{app} - #{timestamp}.dump"
 		local_destination_path = "#{local_destination_directory}/#{local_destination_filename}"
 
-		`curl --silent --output "#{local_destination_path}" --location "#{backup_url}"`
+		cmd = %Q{curl --silent --output "#{local_destination_path}" --location "#{backup_url}"}
+
+    `#{cmd}`
 	end
 end
 
